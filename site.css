@@ -1,0 +1,30 @@
+html {
+    background-color: rgb(35, 121, 121);
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.assignments {
+    background-color: rgb(21, 205, 205);
+    padding: 1em;
+    margin: 1em;
+    margin-left: 25%;
+    margin-right: 25%;
+    max-width: 50%;
+
+}
+h1 {
+    background-color: rgb(192, 225, 254);
+    padding: .2em;
+    margin: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+
+}
+
+p, h2, a {
+    background-color:  rgb(192, 225, 254);
+    padding: .2em;
+}
