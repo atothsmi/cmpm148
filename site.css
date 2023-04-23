@@ -28,3 +28,9 @@ p, h2, a {
     background-color:  rgb(192, 225, 254);
     padding: .2em;
 }
+
+img {
+    max-width: 80vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
