@@ -14,25 +14,25 @@
     width: 50vw;
 }
 
-.color_3 {
-    background-color: rgb(136, 95, 5);
+.color_3 , .color_3>p {
+    background-color: rgb(136, 46, 5);
 }
 
 #assign3_html {
-    background-color: rgb(91, 43, 1);
+    background-color: rgb(91, 24, 1);
 }
 
 h1 {
     background-color: rgb(192, 225, 254);
     padding: .2em;
-    margin: 5%;
+    margin: 2%;
     margin-left: 10%;
     margin-right: 10%;
     text-align: center;
 
 }
 
-p, h2, a {
+.assignments>p, .assignments>h2, .assignments>a {
     background-color:  rgb(192, 225, 254);
     padding: .2em;
 }
@@ -43,7 +43,16 @@ img {
     margin-right: 10vw;
 }
 
-#intro_desc{
+#intro_desc, #time_entry, 
+#descriptor_current_time, 
+#time_output, #time_output>*, 
+#assign3_h1, #assign3_inst>*, #assign3_walk>*{
     background-color: blanchedalmond;
+}
+
+#assign3_walk>img {
+    max-width: 50vw;
+    margin-left: 0vw;
+    margin-right: 0vw;
 }
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html id='assign3_html'>
     <head>
-        <title>Game Name</title>
+        <title>Morgan's Sojourn</title>
         <link rel="stylesheet" href="../site.css">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" 
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
@@ -14,16 +14,77 @@
 
     <main>
         <body>
+            <h1 id="assign3_h1">Morgan's Sojourn</h1>
+            <div id="assign3_inst" class="color_3 assignments">
+                <h2>Instructions</h2>
+                <p>
+                    Players: 2 or more
+                    <br><br>
+                    Introduction: Every night at midnight you have been plagued by visions of an odd shop and 
+                    the thing that runs it. One such vision traps you unless you play its game 
+                    and solve its puzzle.
+                    <br><br>
+                    Goal: Figure out what time the shop's owner will return before they return. They will return after a fixed number of guesses.
+                    <br><br>
+                    Set-Up: Click the 'And then...' button below to generate a shop description.
+                    <br><br>
+                    
+                    Play: Take turns guessing what time the shop's owner will return by entering a time 
+                    in "The time is now:" and clicking "The time shifts..."
+                    <br><br>
+                    Note: Whether you enter your guess in 24hr or 12hr time, is based on your personal settings. Regardless, your guess will be 
+                    automatically converted to 24hr time and printed out in the "The time was:" section.
+                    <br><br>
+                    You can use items to help you. Items will either tell you if the hour (0-23) or the minute (0-59) 
+                    of your guess is equal to, greater than, or less than the correct time. However, each item only 
+                    works within a certain time range. Use the descriptions of what changes after the clock ticks to 
+                    figure out the ranges. Pay attention to the feedback below your guess to determine if you've used 
+                    the item in the correct range.
+                    <br><br>
+                    You gain items by completing challenges. A challenge is generated every time you make a guess. If you 
+                    successfully complete or win the challenge, you get the item generated. You can use that item once before 
+                    it is exhausted. The item is not considered used if it returns to your hands. Every player should keep 
+                    track of the items they have.
+                    <br><br>
+                    You can use the item that the shop sells as many times as you want. For example if the shop that is 
+                    generated is “an oil lamp shop”, you can use “oil lamp” as many times as you like.
+                    <br><br>
+                    Note: Items are case and space sensitive. Be sure to mind spaces and use the singular for shop items.
+                   
+
+
+                </p>
+                <p>Link to Code: <a href="opening.js" target="_blank">opening.js</a></p>
+                <p>Link to Walkthrough using of using tool: <a href="walkthrough.html" target="_blank">walkthrough.html</a></p>
+
+            </div>
+
             <div class="color_3 assignments">
-                <button id='generate_intro' type="button">Generate an introduction.</button>
-                <p id="intro_desc"></p>
+                <p id="intro_desc">The tell-tale sound of a clock striking midnight rings out.</p>
+                <button id='generate_intro' type="button">And then...</button>
             </div>
             
-            <div class="color_3 assignments">
-                <button id='generate_question' type="button">The Answer</button>
-                <div id='QA'>
-                    <textarea name="" id="" cols="50" rows="10"></textarea>
-                </div>
+            <div id="time_main" class="color_3 assignments" hidden>
+                <p id="descriptor_current_time">The time was: <span id="current_time"></span></p>
+
+                <p id="time_entry">
+                    <label for="points">Item Used:</label>
+                    <input id='item_used' name='points' type="text">
+                    <br>
+                    <label for="Time">The time is now: </label>
+                    <input id='entered_time' name='Time' type="time">
+                   
+                    
+                </p>
+
+                <button id='time_shift' type="button">The time shifts...</button>
+
+                <p id="time_output">
+                    ...and something has changed.
+                    <br><br>
+                    <span id="mood_indicator"></span>
+                </p> 
+                
             </div>
             
         </body>
