@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" class="defaultHTML">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assign 4: List of Variable References</title>
+    <link rel="stylesheet" href="../site.css"> 
+</head>
+<body >
+    <h1>Assign 4: Narrative Dialog Trees in Ink</h1>
+    <div class="assignments">
+        <h2> <a href="promises/index.html">Play the Game: Promises</a></h2>
+    </div>
+    <div class="assignments">
+        <h2>List of Callbacks in Text</h2>
+        <p>
+            *Line numbers relevant to .ink files: 
+            <a href="ink_files/" target="_blank">Ink Files</a>
+        </p>
+        <div style="background-color:  rgb(192, 225, 254);">
+            <ol>
+                <li>
+                    Variable: weirdness
+                    <br>
+                    Initialized: promises.ink, Line 5
+                    <br>
+                    Referenced: YoungConvo.ink, young_convo, Line 61 "wiggle wiggle" and throughout
+                    <br>
+                    Description: How odd or fantastical the player is. Higher, is weirder. Lower, is more grounded in reality.
+                </li>
+                <br>
+                <li>
+                    Variable: bravery
+                    <br>
+                    Initialized: promises.ink, Line 6
+                    <br>
+                    Referenced: YoungConvo.ink, young_convo, Line 56 "I'm awake/I refuse..." and throughout
+                    <br>
+                    Description: Tracks how willing the character is to face obstacles. Higher, more willing. Lower, less willing.
+                </li>
+                <br>
+                <li>
+                    Variable: hope
+                    <br>
+                    Initialized: promises.ink, Line 7
+                    <br>
+                    Referenced: YoungConvo, young_convo, super_wiggle, Line 116 "Truely the future..." and throughout
+                    <br>
+                    Description: How positive the character is about the future. Higher, more positive. Lower, more negative.
+                </li>
+                <br>
+                <li>
+                    Variable: desire
+                    <br>
+                    Initialized: promises.ink, Line 8
+                    <br>
+                    Referenced: OldConvo.ink, old_souls, found_her, Line 95 "Eris." and throughout
+                    <br>
+                    Description: Tracks how badly the character wants things out of life. Higher, more. Lower, less.
+                </li>
+                <br>
+                <li>
+                    Variable: satisfaction
+                    <br>
+                    Initialized: promises.ink, Line 9
+                    <br>
+                    Referenced: StuffHappensConvo.ink, happy, Line 219 "I hate it."
+                    <br>
+                    Description: Tracks how satisfied the character is with life. 
+                </li>
+                <br>
+                <li>
+                    Varible: sleeping
+                    <br>
+                    Initialized: YoungConvo.ink, young_convo, bed, Line 80
+                    <br>
+                    Referenced: YoungConvo.ink, young_convo, false_end, Line 147
+                    <br>
+                    Description: If pretends to be sleeping for too long, they actually fall asleep. The same happens if they call Eris's name for a long time.
+                </li>
+                <br>
+                <li>
+                    Stitch: spoilers
+                    <br>
+                    Initialized: YoungConvo.ink, where, spoilers, Line 222
+                    <br>
+                    Referenced: YoungConvo.ink, place, school, Line 278 " "Surprise!" Eris rolls..."
+                    <br>
+                    Description:If the player ends up at school and Eris said the location was a surprise, she says surprise.
+                </li>
+                <br>
+                <li>
+                    Stitch: wiggle
+                    <br>
+                    Initialized: YoungConvo.ink, young_convo, wiggle, Line 95
+                    <br>
+                    Referenced: YoungConvo.ink, promise, Line 342 " "Surprise!" Eris rolls..."
+                    <br>
+                    Description: If the player wiggled earlier, they reference it later when Eris is afraid of seeming silly.
+                </li>
+                <br>
+                <li>
+                    Stitch: park
+                    <br>
+                    Initialized: YoungConvo.ink, place, park, Line 306
+                    <br>
+                    Referenced: OldConvo.ink, old_souls, Line 14
+                    <br>
+                    Description: If the characters made their promise at the park at the begining, they end up at the park at the end. The same happens if they made it on their roof or at their school.
+                </li>
+                <br>
+                <li>
+                    Varible: wrong
+                    <br>
+                    Initialized: StuffHappensConvo.ink, StuffHappens, stuff, Line 19 "Man of Steel,..."
+                    <br>
+                    Referenced: StuffHappensConvo.ink, StuffHappens, stuff, Line 59 "My dinosaur pasta is..."
+                    <br>
+                    Description: If the player guesses the wrong movie, they cannot express weirdness about themselves, because it is too awkward.
+                </li>
+
+                
+
+            </ol>
+
+        </div>
+    </div>
+</body>
+</html>
