@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gods Are What We Make Of Them</title>
+    
+    
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="input_output.js"></script>
+        <script src="mathUtil.js"></script>
+    
+        <script src="narrativeManager.js"></script>
+        <script src="incremental.js" defer></script>
+        <script src="statAnalysis.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="utf-8" />
+        <script src="sketch.js" defer></script>
+    
+        <style>
+            html{
+                background-color: black;
+                color: white
+            }
+
+            .selected {
+                color: red;
+                background-color: #beef
+            }
+
+            #title, #end{
+                text-align: center;
+            }
+            #reports-div{
+                margin-left: 25%;
+                margin-right: 25%;
+            }
+
+            #reports {
+                overflow-y: scroll; 
+                border: 1px solid black; 
+                height: 100px; 
+                width: 100%;
+                margin: auto;
+                display: inline-block;
+            }
+
+            #era {
+                display: flex;
+                justify-content: space-around;
+            }
+            #era>h1 {
+                width: 33%;
+                text-align: center;
+            }
+            #panels-div{
+                display: flex;
+                justify-content: space-around;
+            }
+
+            #panels-div>*{
+                width:30%;
+            }
+
+        </style>
+    
+    
+    </head>
+    <body>
+        <h1 id="title"><span>Gods Are What We Make Of Them</span></h1> 
+        
+        <div id="reports-div">
+            <div id="reports"></div>
+        </div>
+        
+        
+
+        <div class="stage" id="stage1" style="z-index: 1">
+            <div id="era">
+                <h2 id="showPanel1">      The Inner World     </h2> 
+                <h2 id="showPanel2">      The Outer World     </h2>
+                <h2 id="showPanel3">Everywhere Else is On Fire</h2>
+            </div>
+            
+            <div id="panels-div">
+
+            
+                <div class="panel" id="panel1"> 
+                    
+                    <table>
+
+                        <tr>
+                            <td>You have</td> 
+                            <td class="hopesNumber"></td>
+                            <td>hopes.</td>
+                            <td><button onclick=game.gainhopes()>Gather Hope</button></td>
+                        </tr>
+                        <tr id="prayersRow">
+                            <td>You have</td> 
+                            <td class="prayersNumber"></td>
+                            <td>prayers.</td>
+                            <td><button onclick=game.gainprayers()>Gather Prayers</button></td>
+                        </tr>
+                        <tr></tr>
+                        <tr id="strengthRow" class="qualities">
+                            <td>Strength:</td>
+                            <td class="strengthNumber"></td>
+                            <td>%</td>
+                            <td><button onclick=game.gainstrength()>Manifest by <span class="incrementSelf"></span>%</button></td>
+                            <td>500 Prayers<br>500 Hopes</td>
+                        </tr>
+                        <tr id="knowledgeRow" class="qualities">
+                            <td>Knowledge:</td>
+                            <td class="knowledgeNumber"></td>
+                            <td>%</td>
+                            <td><button onclick=game.gainknowledge()>Manifest by <span class="incrementSelf"></span>%</button></td>
+                            <td>500 Prayers<br>500 Hopes</td>
+                        </tr>
+                        <tr id="benevolenceRow" class="qualities">
+                            <td>Benevolence:</td>
+                            <td class="benevolenceNumber"></td>
+                            <td>%</td>
+                            <td><button onclick=game.gainbenevolence()>Manifest by <span class="incrementSelf"></span>%</button></td>
+                            <td>500 Prayers<br>500 Hopes</td>
+                        </tr>
+                        
+                    </table>
+                
+            
+                </div>
+        
+        <!-- delete the following 2 panels if you structuring with sequential stages -->
+                <div class="panel"  id="panel2">
+                    <table>
+                        <tr id="altarsRow">
+                            <td>Altars:</td>
+                            <td class="altarsNumber"></td>
+                            <td></td>
+                            <td><button onclick=game.gainaltars()>Establish an Altar</button></td>
+                            <td><span class="altarCost"></span> Prayers<br><span class="altarCost"></span> Hopes</td>
+                        </tr>
+                        <tr class="act" id="prophetsRow">
+                            <td>Prophets:</td>
+                            <td class="prophetsNumber"></td>
+                            <td></td>
+                            <td><button onclick=game.gainprophets()>Enlighten a Prophet</button></td>
+                            <td><span class="prophetCost"></span> Prayers<br><span class="prophetCost"></span> Hopes</td>
+                        </tr>
+                        <tr id="miraclesRow">
+                            <td>Miracles:</td>
+                            <td class="miraclesNumber"></td>
+                            <td></td>
+                            <td><button onclick=game.gainmiracles()>Protect Them</button></td>
+                            <td><span class="miracleCost"></span>% Strength
+                                <br>
+                                <span class="miracleCost"></span>% Knowledge
+                                <br>
+                                <span class="miracleCost"></span>% Benevolence
+                                </td>
+                        </tr>
+                        <tr class="act" id="survivorsRow">
+                            <td>Survivors:</td>
+                            <td class="survivorsNumber"></td>
+                        </tr>
+
+                    </table>
+                </div>
+                
+                <div class="panel"  id="panel3">
+                    <div id="minigame"></div>
+                    <script src="sketch.js" defer></script>
+                   
+                    <p id="diminish50"><button onclick=multiplyClick()>Randomly Diminish Flames 50 Times</button></p>
+                    <p id="diminish250"><button onclick=multiplyClicks()>Randomly Diminish Flames 250 Times</button></p>
+                </div>
+
+            </div>
+        </div>
+        <div id="end">
+            <h1>THE END</h1>
+
+        </div>
+        
+    </body>
+</html>
