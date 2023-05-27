@@ -1,36 +1,37 @@
-
-
-
-
-deck= [];
+var deck= [];
 
 // card is a key, except when it is an onject and not from the pool
 function addToTopDeck(card, fromPool=true){
 
   if (fromPool)deck.push(cardPool[card])
   else deck.push(card);
-  console.log(card)
+  console.log(card);
 }
 function drawFromDeck(){
-  if (deck.length ==0) alert ("out of cards :(")
+  if (deck.length ==0){
+    addToTopDeck("END")
+    //TODO: If deck length 0, go to credits
+  }
   return deck.pop();
 }
 function shuffleIntoDeck(card, fromPool=true){
   addToTopDeck(card, fromPool)
   shuffleDeck(deck)
+  console.log(deck)
 }
 
 // shuffles the deck and then arranges by priority
 function shuffleDeck(array){
   positions = []
   for (x in array) positions.push({value:array[x], roll:Math.random()});
-  console.log(positions)
-  positions.sort(function(a, b){return a.roll - b.roll;})  
-    
+
+  positions.sort(function(a, b){return a.roll - b.roll;})
+  console.log('Positions: ', positions);
   newArray = [];
-  for (x in positions) {newArray.push(positions[x].value)}
-  newArray.sort(function(a, b){a.priority - b.priority})
+  for (x in positions) newArray.push(positions[x].value)
+  newArray.sort(function(a, b){return a.priority - b.priority});
   
+  deck = newArray
     return newArray;
   }
   
@@ -38,7 +39,7 @@ function shuffleDeck(array){
   function addPackToDeck(pack){
     console.log("attempt to add pack")
     for (x in cardPool.uniqueIDList){
-      console.log(pack, cardPool.uniqueIDList[x].pack)
+      console.log(pack, cardPool[cardPool.uniqueIDList[x]].pack)
       if (cardPool[cardPool.uniqueIDList[x]].pack == pack) {
         shuffleIntoDeck(cardPool.uniqueIDList[x]);
       }

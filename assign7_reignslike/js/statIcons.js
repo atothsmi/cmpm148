@@ -1,8 +1,10 @@
 let resources = [
-  {key: "meat", value: 40,image: "./images/meat.svg", },
-  {key: "veggies", value: 50, image: "./images/carrot.svg"}
+  {key: "apple", value: 50,image: "./images/icons/shiny-apple.svg", },
+  {key: "graduate", value: 30, image: "./images/icons/graduate-cap.svg"},
+  {key: "heart", value: 50, image: "./images/icons/heart-organ.svg"},
+  {key: "wallet", value: 50, image: "./images/icons/wallet.svg"}
 ]
-
+//graduate cannot go below 20
 function addResource(key, amount){
   for (x in resources){
     if (key == resources[x].key) resources[x].value += amount;
@@ -34,22 +36,31 @@ function updateMeters() {
   
 }
 
+checkTransit = 0;
 function checkFail() {
   failures = []
     for (x in resources) {
-      if (resources[x].value > 100) {failures.push({resource: resources[x].key, level: "high"})}
-      if (resources[x].value < 0) {failures.push({rsource: resources[x].key, level: "low"})}
+      if (resources[x].value >= 100) {failures.push({resource: resources[x].key, level: "high"})}
+      if (resources[x].value <= 0) {failures.push({rsource: resources[x].key, level: "low"})}
   }
-   console.log(failures)
+   //console.log(failures)
   for (x in failures){
+    checkTransit += 1;
     let f = failures[x];
     for ( i in failCards){
       let failCard = failCards[i];
-      if (failCard.resource === f.resource && failCard.level === f.level)
-        addToTopDeck(failCard.card, false)
-      else
-        addToTopDeck(defaultFailCard, false)
+      if (failCard.resource === f.resource && failCard.level === f.level){
+        addToTopDeck(failCard.card, false);
+      }else{
+        //addToTopDeck(defaultFailCard, false);
     }
+    }
+    console.log(checkTransit)
+    if (checkTransit % 2 != 0){
+      addToTopDeck(failTransit, false);
+    }
+    
+
     
   }
  

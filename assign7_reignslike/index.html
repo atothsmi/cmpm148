@@ -1,9 +1,8 @@
 <!DOCTYPEhtml><head>
-<title> Game Name</title>
+<title>Anthropomorphism 101</title>
 
 
 <script src="js/jquery-1.11.2.min.js"></script>
-<script src="js/input_output.js"></script>
 
 <script src="js/statIcons.js"></script>
 
@@ -14,7 +13,10 @@
 <script src="js/cardInterface.js"></script>
 <script src="js/showPlayerData.js"></script>
 
-
+<!-- From Google Fonts -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+</style>
 <link rel="stylesheet" href="ui.css">
 
 
@@ -30,7 +32,9 @@
   <div id="statIcons"> </div>
 
 
-  <div id="dialogBox"> </div>
+  <div>
+    <p id="dialogBox"></p>
+  </div>
 
 
   <div id="cardStack"> 
@@ -38,7 +42,7 @@
     <div id="textRight"> Right Choice </div>
     
   
-    <div id="activeCard" onMouseDown=makeActive()><div id="resultText"> A report</div><image id="cardImage"> </div>
+    <div id="activeCard" onmouseover=makeActive()><div id="resultText"> A report</div><image id="cardImage"> </div>
     
   
   </div>
@@ -46,24 +50,19 @@
   <div id="cardName"> 
   
   </div>
+  
 
 
-  <div id="playerData"> </div> 
+  <!-- <div id="playerData"> </div>  -->
 
 </div>
+
 
 
 
 <!-- this data should be exported as a "tab separated", that is what our interpretation function expects -->
 <!-- here is the URL for the google sheet for this project:  https://docs.google.com/spreadsheets/d/1y6r9WXb2a9FA0KxBa__Y3LriUq8_KHakMViJ2irY5D4/edit?usp=sharing -->
 <pre id="data" style="visibility:collapse; display: none">
-ID (unique)	prompt	rightChoiceText	rightChoice	leftChoiceText	leftChoice	name	resultText	image	priority	pack
-q	Do you have Nuts?	What?	addResource("meat", 20);addResource("veggies", -20)	What?	addResource("meat", -20);addResource("veggies", 20)	Dog		Squirrel.jpg	1	bumbling
-w	Hey a Person	What?	addResource("meat", 20);addResource("veggies", -20)	What?	addResource("meat", -20);addResource("veggies", 20)	Dog		Squirrel.png	2	bumbling
-e	Squeak	What?	addResource("meat", 20);addResource("veggies", -20)	What?	addResource("meat", -20);addResource("veggies", 20)	Dog		Squirrel.png	2	bumbling
-r	(Panicking)	What?	addResource("meat", 20);addResource("veggies", -20)	What?	addResource("meat", -20);addResource("veggies", 20)	Dog	Something Alarms Your	Squirrel.png	1	bumbling
-tr	woops	What?	addResource("meat", 20);addResource("veggies", -20)	What?	addResource("meat", -20);addResource("veggies", 20)	Dog		Squirrel.png	2	bumbling
-
 </pre>
 
 </body>

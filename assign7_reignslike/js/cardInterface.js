@@ -94,12 +94,11 @@ $( document ).ready( function(){
 
   activeCardObject = insertCardInfo(firstCard);
   
-  importCardData()
+  //importCardData()
 
   activeCard = document.getElementById("activeCard");
   cardStack = document.getElementById("cardStack");
   cardOrigin = cardStack.offsetLeft 
-  
 
   window.addEventListener('mousemove', (event) => {
     mousePos = { x: event.clientX, y: event.clientY }
@@ -112,10 +111,9 @@ $( document ).ready( function(){
       };  
   })
   
-  animateCard = setInterval(updateUI, 100)
+  animateCard = setInterval(updateUI, 350)
 
 })
-
 
 function updateUI(){
   

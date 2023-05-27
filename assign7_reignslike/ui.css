@@ -1,16 +1,20 @@
+html{
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
-  background-color: #beef;
-  
+  background-color: rgb(0, 0, 0);
+  background-image: url('images/background_gravel.jpg');
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
-  
+  margin: 30px;
 }
 
 
 
 div {
-  background-color: #feebae;
+  background-color: #d1d9e8;
   
 }
 
@@ -22,50 +26,53 @@ div {
 
 #statIcons {
   width: 100%;
-  height: 75px;
+  /* height: 75px; */
   
 }
 #dialogBox{
-  padding: 10px;
-  width: parent;
+  padding: 15px;
+  width: auto;
   height: 75px;
-  
-  
+  text-align: center;
+  font-size: large;
+  margin-top: 0px; 
+  margin-bottom:0px;
+  font-weight: bold;
 }
 #cardStack{
   width:400px;
-  height:400px;
+  height:440px;
   
 }
 #cardName{
   padding: 10px;
-  width: parent;
-  width:100%;
-  height:50px;
+  height:25px;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
   
 }
 #playerData{
   padding: 10px;
-  width: parent;
-  width:100%;
   height:50px;
-  
 }
 
 
 
 #activeCard {
-  background-color: red;
-  
-  width: 400px;
-  height: 400px;
-  
+  border-radius: 25px;
+  width: 330px;
+  height: 440px;
+  margin-left: 35px;
+  margin-right: 35px;
+
   transform-origin: 50% 100%;
   transform-style: preserve-3D;
   
   
   transition: opacity 0.5s linear, transform 0.5s cubic-bezier(0.7, 0.7, 0.84, .99);
 }
+
 #resultText {
   position: absolute;
   background-color: #000000AA;
@@ -73,16 +80,17 @@ div {
   
   text-align: center;
   
-  width: 400px;
-  height: 400px;
-  
+  width: 330px;
+  height: 440px;  
 }
 
 
 #cardImage {
-  width: 400px;
-  height: 400px;
-object-fit: cover;
+  object-fit: cover;
+  border-radius: 25px;
+
+  width: 330px;
+  height: 440px;
   
 }
 
@@ -94,10 +102,8 @@ object-fit: cover;
 .choiceLeftRotate{
   transform: rotate(-30deg);}
 
-.choiceNoneRotate{}
 
 #cardStack{
-  
    position: relative;
   
 }
@@ -108,9 +114,12 @@ object-fit: cover;
   position: absolute;
   top: 20px;
   left: 20px;;
-  width: 50px;
+  width: 100px;
+  text-align: center;
+
+  font-weight: bold;
   
-  
+  background-color: rgb(200, 200, 200);
   transition: opacity 0.5s linear;
 
 }
@@ -119,16 +128,18 @@ object-fit: cover;
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 50px;
+  width: 100px;
+  text-align: center;
+  background-color: rgb(200, 200, 200);
 
-
+  font-weight: bold;
   transition: color 0.5s linear;
 }
 
 
 .statIconImage {
-  width: 75px;
-  height:75px;
+  width: 100%;
+  height: 100px;
   
   mix-blend-mode: multiply;
   
@@ -139,8 +150,8 @@ object-fit: cover;
 }
 
 .resourceBarFront {
-  width: 75px;
-  height: 75px;
+  width: 100%;
+  height: 100px;
   
   position: absolute;
   z-index: 1;
@@ -152,8 +163,8 @@ object-fit: cover;
   transition: transform 2s linear; 
 }
 .resourceBarBack {
-  width: 75px;
-  height: 75px;
+  width: 100%;
+  height: 100px;
   
   position: absolute;
   top:0;
@@ -163,7 +174,7 @@ object-fit: cover;
 .statIconImageContainer{
   position: relative;
   display: inline-block;
-  height: 75px;
-  width: 75px
+  height: 100px;
+  width: 25%
   
 }
