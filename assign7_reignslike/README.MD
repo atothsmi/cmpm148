@@ -21,5 +21,5 @@ CC 3.0 License: https://creativecommons.org/licenses/by/3.0/
 
 Portraits:
 
-All taken by Alia Toth-Smith (author of this game)
+All taken by Alia Toth-Smith (author of this game);
 Rights to photographs reserved (don't reuse them in alternate contexts)
