@@ -1,6 +1,6 @@
 let resources = [
   {key: "apple", value: 50,image: "./images/icons/shiny-apple.svg", },
-  {key: "graduate", value: 30, image: "./images/icons/graduate-cap.svg"},
+  {key: "graduate", value: 50, image: "./images/icons/graduate-cap.svg"},
   {key: "heart", value: 50, image: "./images/icons/heart-organ.svg"},
   {key: "wallet", value: 50, image: "./images/icons/wallet.svg"}
 ]
@@ -65,3 +65,10 @@ function checkFail() {
   }
  
 }
+
+// test_array = [];
+// for (i in resources){
+//   test_array.push(resources[i])
+// }
+// test_array.sort(function(a, b){return b.value - a.value})
+// console.log(test_array);
