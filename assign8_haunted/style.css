@@ -1,0 +1,91 @@
+.bkgd {
+    background-image: url('kunst.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+}
+
+.red{
+    background-color: red;
+}
+
+.black{
+    background-color: black;
+}
+
+.cover-height{
+    height: 100vh;
+}
+
+.cover-width{
+    width: 100vw;
+}
+
+
+.no-margins{
+    margin: 0px;
+}
+
+.no-block-margins{
+    margin-block: 0em;
+}
+
+.fixed{
+    position:absolute;
+}
+
+.nosifer{
+    font-family: 'Nosifer', cursive;
+}
+
+.relative{
+    position: relative;
+}
+
+.top{
+    top: 0px;
+}
+
+.left{
+    left: 0px;
+}
+.bottom{
+    bottom: 0px;
+}
+
+.small-width{
+    width: 100px;
+}
+
+.z-indexNeg1{
+    z-index: -1;
+}
+
+.center-text{
+    text-align: center;
+}
+
+.red-text{
+    color: red;
+}
+
+.medium-left-margin{
+    margin-left: 25%;
+}
+
+.medium-right-margin{
+    margin-right: 25%;
+}
+
+.huge-text{
+    font-size: 120px;
+}
+
+.large-text{
+    font-size: 50px;
+}
+.medium-text{
+    font-size: 24px;
+}
+.small-text{
+    font-size: 8px;
+}
