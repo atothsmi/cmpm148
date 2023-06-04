@@ -181,10 +181,20 @@ const narrativeManager = class {
           }
         }
 
+        if(this.data.pages_visited.includes('LIES') ){
+          if(document.title === 'TRUTH'){
+            if(this.data.pages_visited.includes('HUNGRY')){
+              $('body').addClass('black white-text');
+            }
+          }else{
+            $('body').addClass('black white-text');
+          }
+          
+        }
+
         if(this.data.phase == 'phase12'){
           $('#lies').show();
           hauntings.lies();
-          $('body').addClass('black white-text')
         }
 
         if(this.data.scramble && document.title === 'Hansel and Gretel'){
@@ -207,11 +217,13 @@ const narrativeManager = class {
         }
 
         if(this.data.pages_visited.includes('TRAIL') && document.title === 'Hansel and Gretel'){
-          $('#taunt').show()
-          hauntings.bloodImages();
-          hauntings.changeFont(this.data);
           hauntings.bloodyTitle(this.data);
           hauntings.bloodRed(this.data.intensity);
+        }
+
+        if(this.data.pages_visited.includes('TAUNT') && document.title === 'Hansel and Gretel'){
+          hauntings.bloodImages();
+          hauntings.changeFont(this.data);
         }
 
 
