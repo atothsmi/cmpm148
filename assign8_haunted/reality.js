@@ -2,14 +2,14 @@
 beats = [
   {
     triggered: false,
-    test: function(data){return data.timeElapsed > 60}, 
+    test: function(data){return data.timeElapsed > 20}, 
     unlock: function(manager, data){
       manager.setPhase("phase1");},  
     report: function(){return}
   },
     {
       triggered: false,
-      test: function(data){return data.timeElapsed > 100}, 
+      test: function(data){return data.timeElapsed > 45}, 
       unlock: function(manager, data){
         manager.setPhase("phase2");
         data.intensity += .05},  
@@ -18,7 +18,7 @@ beats = [
 
     {
       triggered: false,
-      test: function(data){return data.timeElapsed > 120}, 
+      test: function(data){return data.timeElapsed > 60}, 
       unlock: function(manager, data){
         data.intensity += .05
       },  
@@ -27,7 +27,7 @@ beats = [
 
     {
       triggered: false,
-      test: function(data){return data.timeElapsed > 140}, 
+      test: function(data){return data.timeElapsed > 75}, 
       unlock: function(manager, data){
         data.intensity += .05
         data.startRed = true;
@@ -37,7 +37,7 @@ beats = [
 
     {
       triggered: false,
-      test: function(data){return data.timeElapsed > 165}, 
+      test: function(data){return data.timeElapsed > 100}, 
       unlock: function(manager, data){
         data.intensity += .1},
       report: function(){return}
@@ -45,7 +45,7 @@ beats = [
     
     {
       triggered: false,
-      test: function(data){        return data.timeElapsed >   175}, 
+      test: function(data){        return data.timeElapsed >   120}, 
       unlock: function(manager, data){      manager.setPhase("phase3")},  
       report: function(){return}
     },
@@ -63,8 +63,10 @@ beats = [
 
     {
       triggered: false,
-      test: function(data){        return data.timeElapsed > 240}, 
-      unlock: function(manager, data){      manager.setPhase("phase5")},  
+      test: function(data){        return document.title === 'LIES'}, 
+      unlock: function(manager, data){
+        manager.addVisited('LIES');
+        manager.setPhase("phase5")},  
       report: function(){return}
     },
 
@@ -116,8 +118,91 @@ beats = [
         manager.setChangePhaseFalse();
       },  
       report: function(){return}
-    }
+    },
 
+    {
+      triggered: false,
+      test: function(data){        return data.change_phase && data.phase == 'phase10'}, 
+      unlock: function(manager, data){      
+        manager.setPhase("phase11");
+        manager.setChangePhaseFalse();
+      },  
+      report: function(){return}
+    },
+
+    {
+      triggered: false,
+      test: function(data){        return document.title === "HUNGER"}, 
+      unlock: function(manager, data){   
+        data.pages_visited.push('HUNGER');
+        manager.setPhase("phase12");
+        hauntings.wordScramble();
+      },  
+      report: function(){return}
+    },
+    
+    {
+      triggered: false,
+      test: function(data){        return document.title === "Hansel and Gretel" && data.phase == 'phase12'}, 
+      unlock: function(manager, data){
+        hauntings.hungerLink();
+      },  
+      report: function(){return}
+    },
+
+    {
+      triggered: false,
+      test: function(data){        return data.pages_visited.includes('TRUTH')}, 
+      unlock: function(manager, data){
+        data.scramble = true;
+        data.truth = true;
+      },  
+      report: function(){return}
+    },
+
+    {
+      triggered: false,
+      test: function(data){    return document.title === "TRUTH"}, 
+      unlock: function(manager, data){
+        data.pages_visited.push('TRUTH');
+      },  
+      report: function(){return}
+    },
+
+    {
+      triggered: false,
+      test: function(data){        return data.pages_visited.includes('HUNGER')}, 
+      unlock: function(manager, data){
+        data.taunt = true;
+      },  
+      report: function(){return}
+    },
+
+    {
+      triggered: false,
+      test: function(data){        return document.title === "TAUNT"}, 
+      unlock: function(manager, data){
+        data.pages_visited.push('TAUNT');
+      },  
+      report: function(){return}
+    },
+
+    {
+      triggered: false,
+      test: function(data){        return data.pages_visited.includes('TAUNT')}, 
+      unlock: function(manager, data){
+        data.trail = true;
+      },  
+      report: function(){return}
+    },
+    {
+      triggered: false,
+      test: function(data){        return document.title === "TRAIL"}, 
+      unlock: function(manager, data){
+        data.pages_visited.push('TRAIL');
+      },  
+      report: function(){return}
+    },
 
     ]
 
@@ -234,9 +319,58 @@ beats = [
         $('#truth').insertAfter('#s' + ran_span.toString())
       }
 
+      static lies(){
+        let ran_span = Math.floor(Math.random() * 32);
+        $('#lies').show()
+        $('#lies').insertAfter('#s' + ran_span.toString())
+      }
+
       static TRUTH(){
         $('body').removeClass('medium-right-margin medium-left-margin').addClass( 'black no-margins')
         $('body').html("<div class='nosifer red-text huge-text'>" + the_truth);
+        //console.log(window.location.href)
+        setTimeout(function(){
+          window.location.href = "./truth.html";
+        }, 5000)
+      }
+
+      static wordScramble(className, intensity){
+        let spans = $('.'+className)
+        setInterval(function(){
+          if (Math.random() < intensity){ //INTENSITY
+            for (let i = 0; i < spans.length; i++){
+              let span = $('#s' + (i + 1).toString()).html()
+              //console.log(span, i)
+              let text = span
+              let rtext = ''
+              for(let chr = 0; chr < text.length; chr++){
+                let num = chr
+                if (Math.random() < .1){ //INTENSITY
+                  num = Math.floor(Math.random() * text.length);
+                }
+                //console.log(text[ran_num])
+                rtext += text[num]
+              }
+              spans[i].innerHTML = rtext
+            }
+          }
+        }, 500)
+        
+      }
+
+      static hungerLink(){
+        let span = $('#s21')[0]
+        let text = span.innerHTML
+        let len = text.length
+        span.innerHTML = text.slice(0, 238) + '<a href="hunger.html">hunger</a>' + text.slice(244, len)
+        span = $('#s4')[0]
+        text = span.innerHTML
+        len = text.length
+        span.innerHTML = text.slice(0, 72) + '<a href="hunger.html">hunger</a>' + text.slice(78, len)
+        span = $('#s5')[0]
+        text = span.innerHTML
+        len = text.length
+        span.innerHTML = text.slice(0, 70) + '<a href="hunger.html">hunger</a>' + text.slice(76, len)
       }
           
       }

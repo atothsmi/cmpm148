@@ -4,7 +4,7 @@ const narrativeManager = class {
     constructor() {
       this.data = {
         timeElapsed : 0,
-        possiblePhases : ["phase0","phase1", "phase2", "phase3", "phase4", "phase5", "phase6", 'phase7', 'phase8', 'phase9', 'phase10'],
+        possiblePhases : ["phase0","phase1", "phase2", "phase3", "phase4", "phase5", "phase6", 'phase7', 'phase8', 'phase9', 'phase10', 'phase11', 'phase12'],
         phase : "phase0",
         beats : beats,
         beatsTriggered: [],
@@ -16,7 +16,13 @@ const narrativeManager = class {
 
         reloaded: 0,
         old_reloaded: 0,
-        change_phase: false
+        change_phase: false,
+        scramble: false,
+        truth: false,
+        trail: false,
+        taunt: false,
+
+        pages_visited: []
       }
 
       for (let x in this.data.beats){
@@ -84,6 +90,10 @@ const narrativeManager = class {
           }
       }
     }
+
+    addVisited(visit){
+      this.data.pages_visited.push(visit);
+    }
     
     save(){
       console.log("save_attempted")
@@ -123,8 +133,9 @@ const narrativeManager = class {
         }
 
         if(this.data.phase == 'phase3'){
-          this.data.word = "WHY DO YOU WANT TO READ THESE LIES"
+          this.data.word = "WHY DO YOU WANT TO READ THESE LIES";
           hauntings.happyFamily(this.data);
+          this.data.word = "<a href='lies.html'>LIES</a>"
         }
 
         if(this.data.phase == 'phase4' || this.data.phase == 'phase7'){
@@ -152,12 +163,55 @@ const narrativeManager = class {
         }
 
         if(this.data.phase == 'phase9'){
+          hauntings.wordScramble('span', this.data.intensity)
           $('#truth').show()
           hauntings.truth();
         }
 
         if(this.data.phase == 'phase10'){
           hauntings.TRUTH();
+        }
+
+        if(this.data.phase == 'phase12'){
+          if(document.title == "LIES"){
+            setInterval(function(){
+              hauntings.truth();
+              hauntings.lies();
+            }, Math.random() * 500)
+          }
+        }
+
+        if(this.data.phase == 'phase12'){
+          $('#lies').show();
+          hauntings.lies();
+          $('body').addClass('black white-text')
+        }
+
+        if(this.data.scramble && document.title === 'Hansel and Gretel'){
+          hauntings.wordScramble('span', this.data.intensity);
+        }
+
+        if(this.data.truth && document.title === 'Hansel and Gretel'){
+          $('#truth').show();
+          hauntings.truth();
+          $('#lies').show();
+          hauntings.lies();
+        }
+
+        if(this.data.trail && document.title === 'TRUTH'){
+          $('#trail').show()
+        }
+
+        if(this.data.taunt && document.title === 'TRUTH'){
+          $('#taunt').show()
+        }
+
+        if(this.data.pages_visited.includes('TRAIL') && document.title === 'Hansel and Gretel'){
+          $('#taunt').show()
+          hauntings.bloodImages();
+          hauntings.changeFont(this.data);
+          hauntings.bloodyTitle(this.data);
+          hauntings.bloodRed(this.data.intensity);
         }
 
 
@@ -174,7 +228,7 @@ window.addEventListener("load", function() {
     manager.data.reloaded += 1;
     //console.log("loaded")
   }
-  if (manager.data.phase == 'phase3' || manager.data.phase == 'phase5' || manager.data.phase == 'phase6' || manager.data.phase == 'phase7' || manager.data.phase == 'phase8' || manager.data.phase == 'phase9'){
+  if (manager.data.phase == 'phase3' || manager.data.phase == 'phase5' || manager.data.phase == 'phase6' || manager.data.phase == 'phase7' || manager.data.phase == 'phase8' || manager.data.phase == 'phase9' || manager.data.phase == 'phase10'){
     if(manager.data.reloaded > manager.data.old_reloaded){
       manager.data.change_phase = true
     }
@@ -184,9 +238,8 @@ window.addEventListener("load", function() {
   console.log(manager.data)
  
   manager.run();
-  $('#truth').hide()
-  if (manager.data.phase == 'phase6' || manager.data.phase == 'phase9'){
-    $('#truth').mouseover(hauntings.TRUTH)
-  }
-  
+  $('#truth').hide();
+  $('#lies').hide();
+  $('#trail').hide();
+  $('#taunt').hide();
 });
