@@ -22,7 +22,7 @@ const narrativeManager = class {
         trail: false,
         taunt: false,
 
-        pages_visited: []
+        pages_visited: ['']
       }
 
       for (let x in this.data.beats){
@@ -224,6 +224,10 @@ const narrativeManager = class {
         if(this.data.pages_visited.includes('TAUNT') && document.title === 'Hansel and Gretel'){
           hauntings.bloodImages();
           hauntings.changeFont(this.data);
+        }
+
+        if(this.data.pages_visited.includes('TAUNT') && document.title != 'Hansel and Gretel'){
+          setTimeout(hauntings.wordScramble, 2000);
         }
 
 
